@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // User can be in many threads
+  threadParticipants ThreadParticipant[]
+  // User can send many messages
+  sentMessages       Message[]
+
+  @@map("users")
+}
+
+model Thread {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Thread has many participants
+  participants ThreadParticipant[]
+  // Thread has many messages
+  messages     Message[]
+
+  @@map("threads")
+}
+
+model ThreadParticipant {
+  id       Int @id @default(autoincrement())
+  userId   Int
+  threadId Int
+
+  user   User   @relation(fields: [userId], references: [id])
+  thread Thread @relation(fields: [threadId], references: [id])
+
+  @@unique([userId, threadId])
+  @@map("thread_participants")
+}
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  content   String
+  createdAt DateTime @default(now())
+  senderId  Int
+  threadId  Int
+
+  sender User   @relation(fields: [senderId], references: [id])
+  thread Thread @relation(fields: [threadId], references: [id])
+
+  @@map("messages")
+}
