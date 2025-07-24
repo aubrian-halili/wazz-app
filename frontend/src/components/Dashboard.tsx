@@ -7,7 +7,7 @@ const Dashboard: React.FC = () => {
   const [selectedThread, setSelectedThread] = useState<Thread | null>(null);
 
   return (
-    <div className="h-screen flex bg-gray-100">
+    <div className="h-screen w-full flex bg-gray-100">
       <ThreadList
         onSelectThread={setSelectedThread}
         selectedThreadId={selectedThread?.id}
