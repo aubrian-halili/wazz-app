@@ -27,6 +27,14 @@ A real-time messaging application built with React, TypeScript, Node.js, GraphQL
 - **JWT** for authentication
 - **bcryptjs** for password hashing
 
+## Database Schema
+
+The application uses a PostgreSQL database with the following entities and relationships:
+
+### Database Diagram
+
+![Database Schema](db-diagram.png)
+
 ## Prerequisites
 
 Before running the application, make sure you have:
