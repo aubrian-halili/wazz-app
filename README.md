@@ -39,7 +39,7 @@ The application uses a PostgreSQL database with the following entities and relat
 
 Before running the application, make sure you have:
 
-1. **Node.js** (v18 or higher)
+1. **Node.js** (v20 or higher)
 2. **PostgreSQL** database running locally
 3. **npm** or **yarn** package manager
 

@@ -1,0 +1,21 @@
+# CloudFormation Parameters for Wazz App Infrastructure
+# Copy this file to parameters.json and fill in your values
+
+[
+  {
+    "ParameterKey": "Environment",
+    "ParameterValue": "production"
+  },
+  {
+    "ParameterKey": "ProjectName",
+    "ParameterValue": "wazz-app"
+  },
+  {
+    "ParameterKey": "DBUsername",
+    "ParameterValue": "wazzuser"
+  },
+  {
+    "ParameterKey": "DBPassword",
+    "ParameterValue": "CHANGE_ME_SECURE_PASSWORD"
+  }
+]

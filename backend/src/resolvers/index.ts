@@ -5,6 +5,7 @@ import { messageResolvers } from './message';
 
 export const resolvers = {
   Query: {
+    health: () => 'OK',
     ...userResolvers.Query,
     ...threadResolvers.Query,
     ...messageResolvers.Query

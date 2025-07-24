@@ -30,6 +30,7 @@ export const typeDefs = gql`
   }
 
   type Query {
+    health: String!
     me: User
     threads: [Thread!]!
     thread(id: ID!): Thread
